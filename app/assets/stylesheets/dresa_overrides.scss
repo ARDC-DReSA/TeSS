@@ -1,0 +1,17 @@
+// DReSA style overrides, ported from production drift (2026-09-25).
+// Kept in one file so upstream stylesheet updates merge cleanly.
+
+// Taller footer (funding logos + acknowledgement of country) needs more
+// reserved space at the bottom of the body.
+body {
+  padding-bottom: 280px;
+}
+
+// DReSA shows the sidebar header that upstream hides.
+#sidebar-header {
+  display: block;
+}
+
+.user_public {
+  font-size: 20px;
+}

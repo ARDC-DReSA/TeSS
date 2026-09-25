@@ -67,6 +67,10 @@
             <%= menu_item t("features.#{t[:feature]}.short"), t[:link] %>
           <% end %>
 
+          <%# DReSA: AI educator tiles page and public contact form %>
+          <%= menu_item "Educators", educators_path %>
+          <%= menu_item "Contact Us", contact_path %>
+
           <% if directory_tabs.present? %>
             <li class="dropdown directory-menu">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"

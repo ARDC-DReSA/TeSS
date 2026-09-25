@@ -1,97 +1,45 @@
-<% space_string_in_config = current_space.default? ? 'default' : current_space.host %>
-
+<%# DReSA footer: ported from production (dresa-org-au drift branch), with
+    upstream's cookie-preferences link added since the fresh fork enables
+    cookie consent. %>
 <footer class="footer">
   <div class="container">
+
     <div class="row">
-      <div class="col-sm-4 col-xs-6">
-        <div class="footer-logo footer-item">
-          <% if TeSS::Config.site.dig('footer', 'show_space_logo') && current_space.image? %>
-            <%= image_tag(current_space.image.url, :alt => current_space.logo_alt) %>
-          <% else %>
-            <%= image_tag(TeSS::Config.site['logo'], :alt => TeSS::Config.site['logo_alt']) %>
-          <% end %>
-        </div>
-
-        <div class="footer-item contact-link">
-          <%= mail_to(TeSS::Config.contact_email) %><br/>
-        </div>
-
-        <% if TeSS::Config.site.dig('footer', 'additional_links') %>
-           <% TeSS::Config.site.dig('footer', 'additional_links').each do |link| %>
-            <% if link[:location] == 'left' && (link[:space].blank? || link[:space] == space_string_in_config) %>
-              <div class="footer-item">
-                <%= link_to link[:title], link[:url] %>
-              </div>
-            <% end %>
-          <% end %>
-        <% end %>
-
-        <%= link_to t("home.providers.button_text"), registering_resources_path, class: 'btn btn-primary btn-sm', style: 'margin-top: 1em' %>
-      </div>
-
-      <div class="col-sm-4 col-xs-6 text-left">
-        <div class="footer-item">
-          <%= link_to t('footer.about', title: TeSS::Config.site['title_short']), about_path %>
-        </div>
-        <% if TeSS::Config.feature['spaces'] %>
-          <div class="footer-item">
-            <%= link_to t('footer.browse_spaces'), spaces_path %>
-          </div>
-        <% end %>
-        <div class="footer-item">
-          <%= link_to t('footer.funding'), us_path(anchor: 'funding') %>
-        </div>
-        <div class="footer-item">
-          <%= link_to t('footer.privacy'), privacy_path %>
-        </div>
+      <div class="col-md-3 col-sm-3 col-xs-6">
+        <%= link_to 'Terms of Use', '/DReSA-Terms-of-use.pdf', target: '_blank' %>
+        |
+        <%= link_to 'User Manual', '/DReSA-User-Manual.pdf', target: '_blank' %><br/>
+        <%= link_to 'Video Guides', 'http://videos.dresa.org.au', target: '_blank' %><br/>
+        <%= link_to 'Privacy', privacy_path %><br/>
         <% if cookie_consent.required? %>
-          <div class="footer-item">
-            <%= link_to t('footer.cookie_preferences'), cookies_consent_path %>
-          </div>
+          <%= link_to t('footer.cookie_preferences'), cookies_consent_path %><br/>
         <% end %>
-        <% if TeSS::Config.site.dig('footer', 'additional_links') %>
-           <% TeSS::Config.site.dig('footer', 'additional_links').each do |link| %>
-            <% if (link[:location] == 'center' || !link[:location]) && (link[:space].blank? || link[:space] == space_string_in_config)%>
-              <div class="footer-item">
-                <%= link_to link[:title], link[:url] %>
-              </div>
-            <% end %>
-          <% end %>
-        <% end %>
-       
+        <%= mail_to(TeSS::Config.contact_email, 'Contact us') %><br/>
+        <%= link_to "Source code [ version: #{app_version_text} ]",
+                    "#{TeSS::Config.site['repository']}/blob/master/README.md", target: '_blank' %>
       </div>
-
-      <div class="col-sm-4 col-xs-6 text-left">
-        <div class="footer-item">
-          <%= t('footer.version') %> <code><%= app_version_text -%></code>
-        </div>
-
-        <div class="footer-item">
-          <%= link_to t('footer.source_code'), TeSS::Config.site['repository'], target: '_blank', rel: 'noopener' %>
-        </div>
-
-        <div class="footer-item">
-          <%= link_to t('footer.api_documentation'), asset_path('api/json_api', skip_pipeline: true) %>
-        </div>
-
-        <% if TeSS::Config.feature['bioschemas_testing'] %>
-          <div class="footer-item">
-            <%= link_to t('footer.bioschemas_testing_tool'), bioschemas_test_path %>
-          </div>
-        <% end %>
-
-        <% if TeSS::Config.site.dig('footer', 'additional_links') %>
-           <% TeSS::Config.site.dig('footer', 'additional_links').each do |link| %>
-            <% if link[:location] == 'right' && (link[:space].blank? || link[:space] == space_string_in_config)%>
-              <div class="footer-item">
-                <%= link_to link[:title], link[:url] %>
-              </div>
-            <% end %>
-          <% end %>
-        <% end %>
+      <div class="col-md-9 col-sm-9 col-xs-6">
+        <%= render :partial => 'layouts/dresa_funded_by' %>
       </div>
-
-      <%= render partial: 'layouts/supported_by' %>
     </div>
+
+    <div class="row">
+      <div class="col-lg-12">
+        <%= render :partial => 'layouts/dresa_funded_by_text' %>
+      </div>
+    </div>
+
+    <div class="row hidden-sm hidden-xs hidden-md no-gutters" style="margin-bottom: 0;">
+      <div class="col-lg-12 supported-by">
+        <%= render :partial => 'layouts/dresa_supported_by' %>
+      </div>
+    </div>
+
+    <div class="row" style="margin-top: 0;">
+      <div class="col-md-12 ack-country">
+        <%= raw t 'footer.acknowledgement' %>
+      </div>
+    </div>
+
   </div>
 </footer>
