@@ -15,6 +15,10 @@ class AboutController < ApplicationController
   def learning_paths
   end
 
+  # DReSA: FAQs page
+  def faqs
+  end
+
   def developers
   end
 

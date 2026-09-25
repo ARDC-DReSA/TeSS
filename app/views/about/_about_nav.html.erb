@@ -70,4 +70,11 @@
       <li><%= about_nav_link(t("us.keys.#{tab[:key]}"), tab[:link], tab[:key]) %></li>
     <% end %>
   </ul>
+
+  <!-- DReSA: FAQs -->
+  <ul class="nav nav-stacked">
+    <li class="<%= show_active(show, 'faqs') %>">
+      <%= link_to 'FAQs', faqs_path %>
+    </li>
+  </ul>
 </nav>

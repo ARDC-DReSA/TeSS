@@ -17,7 +17,21 @@ class UsersController < ApplicationController
     @users = @users.with_query(params[:q].chomp('*')) if params[:q].present?
     @users = @users.paginate(page: params[:page], per_page: 50)
 
+    respond_to do |  def destroy
+    authorize @user
+    # DReSA: block deletion while the user still owns ingestion sources,
+    # otherwise their sources are orphaned. Ported from production drift.
+    unless @user.sources.empty?
+      flash[:notice] = 'You have to assign your ingestion sources to a new owner before deleting this account'
+      redirect_to user_path(@user) and return
+    end
+    @user.create_activity :destroy, owner: current_user
+    @user.destroy
     respond_to do |format|
+      format.html { redirect_to users_path, notice: 'User was successfully destroyed.' } # Devise is also doing redirection here
+      format.json { head :no_content }
+    end
+  end|
       format.html
       format.json
       format.json_api { render(json: @users, links: { self: users_path }) }
