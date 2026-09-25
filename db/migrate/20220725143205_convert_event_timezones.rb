@@ -1,6 +1,13 @@
 class ConvertEventTimezones < ActiveRecord::Migration[6.1]
+  # DReSA fork patch (2026-09-25): use a migration-local stub instead of the
+  # app Event model (whose presence enum needs a column that does not exist
+  # yet at this point in the chain).
+  class MigrationEvent < ActiveRecord::Base
+    self.table_name = "events"
+  end
+
   def up
-    Event.where.not(timezone: ActiveSupport::TimeZone::MAPPING.keys + [nil, '']).find_each do |event|
+    MigrationEvent.where.not(timezone: ActiveSupport::TimeZone::MAPPING.keys + [nil, '']).find_each do |event|
       tz = mapping[event.timezone]
       event.update_column(:timezone, tz) if tz
     end

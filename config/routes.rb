@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "/gate", to: "gate#show" # DReSA bot-control challenge page
   resources :groups
   concern :collaboratable do
     resources :collaborations, only: [:create, :destroy, :index, :show]
