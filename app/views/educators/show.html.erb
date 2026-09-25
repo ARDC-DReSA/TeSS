@@ -1,0 +1,22 @@
+<div class="wrapper">
+  <div id="content">
+    <div class="media">
+      <div class="media-left">
+        <%= image_tag @educator.image.url, class: 'media-object', style: 'max-width: 150px;' %>
+      </div>
+      <div class="media-body">
+        <h2><%= @educator.title %></h2>
+        <p><%= @educator.description %></p>
+        <p><%= link_to 'Open this educator', @educator.url, class: 'btn btn-primary' %></p>
+        <% if policy(@educator).update? %>
+          <p>
+            <%= link_to 'Edit', edit_educator_path(@educator), class: 'btn btn-default' %>
+            <%= link_to 'Delete', educator_path(@educator), method: :delete,
+                        data: { confirm: 'Remove this educator tile?' }, class: 'btn btn-danger' %>
+          </p>
+        <% end %>
+      </div>
+    </div>
+    <p><%= link_to '&larr; All educators'.html_safe, educators_path %></p>
+  </div>
+</div>

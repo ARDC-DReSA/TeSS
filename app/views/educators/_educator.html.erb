@@ -1,0 +1,15 @@
+<li class="masonry-brick media-item">
+  <%= image_tag educator.image.url, class: "media-image listing_image" %>
+  <h3 class="media-heading"><%= educator.title %></h3>
+  <p><%= truncate(educator.description, length: 120, separator: ' ') %></p>
+
+  <%# The whole tile opens the educator itself; details/editing live on the show page. %>
+  <%= link_to '', educator.url, class: 'media-view' %>
+
+  <div style="position: relative; z-index: 30;">
+    <%= link_to 'Details', educator_path(educator), style: 'font-size: 0.85em;' %>
+    <% if policy(educator).update? %>
+      &middot; <%= link_to 'Edit', edit_educator_path(educator), style: 'font-size: 0.85em;' %>
+    <% end %>
+  </div>
+</li>

@@ -1,0 +1,44 @@
+<style>
+select {
+    display:block;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    padding: 5px 0;
+    position: relative;
+    color: #333;
+    font-size: 14px;
+    line-height: 20px;
+    padding: 5px 22px;
+    text-decoration: none;
+    cursor: pointer;
+    &:hover {
+      background: $dropdown-link-hover-bg;
+     }
+    }
+</style>
+
+<%= form_with scope: :contact_form, url: contact_form_index_path, method: :post, local: true, class: "container" do |form| %>
+  <div class="form-group">
+    <%= form.label :name %>
+    <%= form.text_field :name, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= form.label :phone %>
+    <%= form.text_field :phone, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= form.label :email %>
+    <%= form.email_field :email, class: "form-control" %>
+  </div>
+  <div class="form-group"> 
+    <%= form.label :message_type %>
+    <%= form.select :type, [["request new feature", "request new feature"], ["report bug", "report bug"], ["general", "general"], ["complaint", "complaint"], ["feedback", "feedback"]], selected: "general" %>
+  </div>
+  <div class="form-group">
+    <%= form.label :message %>
+    <%= form.text_area :message, class: "form-control" %>
+  </div>
+  <%= form.submit "Submit", class: "btn btn-primary" %>
+  <br />
+  <br />
+<% end %>

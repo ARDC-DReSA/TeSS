@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   get "/gate", to: "gate#show" # DReSA bot-control challenge page
+  get 'contact' => 'contact_form#new', as: 'contact' # DReSA
+  resources :contact_form, only: %i[new create] # DReSA
+  get 'about/faqs' => 'about#faqs', as: 'faqs' # DReSA
+  resources :educators # DReSA
   resources :groups
   concern :collaboratable do
     resources :collaborations, only: [:create, :destroy, :index, :show]

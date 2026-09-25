@@ -1,0 +1,22 @@
+<%= simple_form_for @educator, html: { multipart: true } do |f| %>
+  <%= f.error_notification %>
+
+  <%= f.input :title, label: 'Name *' %>
+  <%= f.input :url, label: 'Link *', hint: 'Where the tile takes users - the educator page itself.' %>
+  <%= f.input :description, as: :text, input_html: { rows: 4 },
+              hint: 'One or two sentences shown on the tile.' %>
+  <%= f.input :category, hint: 'Tiles are grouped under this heading (e.g. Dataspaces).' %>
+
+  <div class="form-group">
+    <label>Image</label>
+    <% if @educator.image? %>
+      <div><%= image_tag @educator.image.url, style: 'max-height: 80px;' %></div>
+    <% end %>
+    <%= f.file_field :image %>
+  </div>
+  <%= f.input :image_url, label: 'or image URL',
+              hint: 'Alternatively, the address of an image to use.' %>
+
+  <%= f.button :submit, class: 'btn btn-primary' %>
+  <%= link_to 'Cancel', educators_path, class: 'btn btn-default' %>
+<% end %>
