@@ -1,4 +1,6 @@
 class ContactFormController < ApplicationController
+  # DReSA: the contact form is public (upstream requires login by default)
+  skip_before_action :authenticate_user!, :authenticate_user_from_token!, only: %i[new create]
 
   def create
     @name = params[:contact_form][:name]

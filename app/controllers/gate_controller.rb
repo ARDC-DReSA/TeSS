@@ -5,10 +5,15 @@
 # the gate can be re-enabled at any time.
 class GateController < ApplicationController
   def show
-    # Only ever redirect within this site: accept a plain path, reject
-    # absolute URLs / protocol-relative URLs (open-redirect hardening).
+    # Only ever redirect within this site (open-redirect hardening):
+    # accept a plain local path like "/materials", reject absolute URLs
+    # ("https://evil.example"), protocol-relative URLs ("//evil.example")
+    # and backslash tricks ("/\evil.example").
     requested = params[:next].to_s
-    @next = requested.match?(%r{\A/[^/\]}) ? requested : "/"
+    safe = requested.start_with?("/") &&
+           !requested.start_with?("//") &&
+           !requested.include?("\\")
+    @next = safe ? requested : "/"
 
     # If already logged in, send them straight to the target page
     redirect_to @next if user_signed_in?
