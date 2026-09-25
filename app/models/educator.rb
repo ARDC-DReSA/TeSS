@@ -13,7 +13,7 @@ class Educator < ApplicationRecord
   validates :title, :url, presence: true
   validates :url, url: true
 
-  has_image(placeholder: TeSS::Config.placeholder['provider'])
+  has_image(placeholder: TeSS::Config.placeholder['content_provider'])
 
   def self.visible_categories
     order(:created_at).group_by { |e| e.category.presence || 'Dataspaces' }
