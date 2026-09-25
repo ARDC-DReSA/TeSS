@@ -15,3 +15,195 @@ body {
 .user_public {
   font-size: 20px;
 }
+
+// ---------------------------------------------------------------------------
+// Ported 2026-09-25 (act three follow-up): the DReSA home page and footer
+// markup depends on these rules, which upstream removed in its stylesheet
+// restructure. Variables inlined so this file stays self-contained.
+// ---------------------------------------------------------------------------
+$dresa-purple: #6a57a5;
+$dresa-blue: #19224e;
+$dresa-green: #00b8b6;
+
+// Footer: acknowledgement of country strip
+.ack-country {
+  border-top: 2px solid $dresa-green;
+  margin-top: 0;
+  padding-top: 0.5em;
+  text-align: center;
+}
+
+// Footer: "supported by" logo strip (small, centred)
+.supported-by {
+  margin-bottom: 0;
+  text-align: center;
+  vertical-align: middle;
+  font-size: x-small;
+  line-height: 1.2;
+}
+
+.funder-text {
+  padding-top: 1em;
+  p {
+    font-size: xx-small;
+    vertical-align: bottom;
+    line-height: 1.25;
+  }
+}
+
+// Footer: funder logos capped at 60px, partner logos at 45px -
+// without these the raw images render at full size (the "huge footer").
+.funder-logo {
+  img {
+    padding: 1em 1em 0 0;
+    height: 60px;
+  }
+}
+
+.partner-logo {
+  img {
+    margin: 0 0 12px 0;
+    border-right: 1px solid $dresa-green;
+    padding: 0 12px;
+    height: 45px;
+  }
+}
+
+.partner-logos .partner-logo:last-child {
+  img {
+    border-right: none;
+  }
+}
+
+// Home page: the Events/Materials/Providers/Trainers tile grid
+ul.featureblocks {
+  padding: 10px 0;
+  margin: 0 -10px;
+  list-style: none;
+  overflow: auto;
+
+  li {
+    float: left;
+    width: 20%;
+    padding: 0 12px;
+    border-right: 1px dotted #ccc;
+
+    &:last-child {
+      border: none;
+    }
+
+    @media (max-width: 992px) {
+      width: 50%;
+      border-right: none;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      margin-top: 10px;
+      font-size: 20px;
+      line-height: 24px;
+    }
+
+    a {
+      color: #444;
+    }
+
+    p {
+      margin: 5px 0;
+    }
+  }
+
+  li.pair { width: 50%; }
+  li.triple { width: 33%; }
+  li.quad { width: 25%; }
+}
+
+// Home page: big centred search box
+.searchbox {
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 30px;
+
+  form {
+    padding-right: 10px;
+    background-color: #fff;
+    text-align: center;
+    line-height: 2;
+    font-size: large;
+    margin: auto;
+    max-width: 800px;
+    border: 1px solid #ccc;
+
+    .searchbox-wrapper { display: flex; }
+
+    .searchbox-field {
+      border: none;
+      background: transparent;
+      padding: 15px 15px 15px 25px;
+      flex: 1;
+      min-width: 220px;
+    }
+
+    .searchbox-btn {
+      border: none;
+      background: transparent;
+      padding: 5px 15px;
+      flex-shrink: 0;
+    }
+  }
+}
+
+.welcome-text {
+  padding: 20px;
+  text-align: center;
+}
+
+.days_ago_text {
+  color: grey;
+  font-style: italic;
+}
+
+// DReSA footer chrome: dark blue with the green top rule; white links.
+// The funder/partner logos are the inverted (white) variants, so the dark
+// background is essential.
+.footer {
+  border-top: solid 3px $dresa-green;
+  margin-top: 0;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: $dresa-blue;
+  color: white;
+
+  a {
+    color: white;
+    background-color: transparent;
+    text-decoration: none;
+  }
+
+  h5, h6 {
+    font-weight: bold;
+  }
+
+  .container {
+    padding: 0;
+  }
+}
+
+// The absolute footer needs the page to reserve space and anchor it.
+body {
+  position: relative;
+  min-height: 100%;
+}
+
+// Mobile improvement over production: the pair/triple/quad width classes
+// used to defeat the 50% responsive rule, squeezing four tiles onto one
+// phone-width row. Keep two per row on small screens.
+@media (max-width: 992px) {
+  ul.featureblocks li.pair,
+  ul.featureblocks li.triple,
+  ul.featureblocks li.quad {
+    width: 50%;
+  }
+}

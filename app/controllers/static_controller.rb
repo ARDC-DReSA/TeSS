@@ -20,7 +20,7 @@ class StaticController < ApplicationController
 
     # DReSA: the home page tiles size themselves by how many home features
     # are switched on (ported from production drift).
-    home_keys = %w[events materials providers trainers workflows]
+    home_keys = %w[events materials content_providers trainers workflows]
     on_features = TeSS::Config.feature.select { |k, v| home_keys.include?(k) && v == true }
     case on_features.size
     when 2
