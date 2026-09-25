@@ -45,6 +45,8 @@ class Event < ApplicationRecord
       text :country
       boolean :visible
       text :host_institutions
+      # DReSA: host institutions is also a filterable facet (drift #91)
+      string :host_institutions, multiple: true
       text :timezone
       text :content_provider do
         content_provider.title unless content_provider.nil?
@@ -149,6 +151,10 @@ class Event < ApplicationRecord
   auto_strip_attributes :title, :description, :url, squish: false
 
   validates :title, :url, presence: true
+  # DReSA: events must carry enough metadata to be useful to learners
+  # (ported from production drift - stricter than upstream's title+url).
+  validates :organizer, :description, :host_institutions, :timezone, :contact, :eligibility,
+            presence: true
   validates :url, url: true
   validates :capacity, numericality: { greater_than_or_equal_to: 1 }, allow_blank: true
   validates :cost_value, numericality: { greater_than: 0 }, allow_blank: true
@@ -215,7 +221,7 @@ class Event < ApplicationRecord
   end
 
   def self.facet_fields
-    field_list = %w[ content_provider keywords scientific_topics operations tools fields online event_types
+    field_list = %w[ content_provider host_institutions keywords scientific_topics operations tools fields online event_types
                      start venue city country organizer sponsors target_audience eligibility language
                      user node collections contributors instructors]
 

@@ -50,7 +50,7 @@
           <hr>
 
           <%= f.input :public, label: 'Show in Registry of Trainers?',
-                      input_html: { title: t('profile.hints.public') } %>
+                      input_html: { title: t('profile.hints.public') }, wrapper_html: { class: 'user_public' } %> <%# DReSA: larger text %>
 
           <%= f.input :description, label: 'Summary', input_html: { title: t('profile.hints.description') } %>
 

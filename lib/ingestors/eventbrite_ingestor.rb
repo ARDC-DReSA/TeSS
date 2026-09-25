@@ -60,7 +60,7 @@ module Ingestors
 
           events.each do |item|
             records_read += 1
-            if item['status'].nil? or item['status'] != 'live'
+            if item['status'].nil? or item['status'] != 'live' or item['listed'] == false # DReSA: skip unlisted (private) events too
               records_inactive += 1
             else
               # create new event

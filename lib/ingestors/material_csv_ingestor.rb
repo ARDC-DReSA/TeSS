@@ -32,7 +32,7 @@ module Ingestors
           material.keywords = process_array row, 'Keywords'
           material.contact = get_column row, 'Contact'
           material.licence = process_licence row, 'Licence'
-          material.status = get_column row, 'Status'
+          material.status = (get_column row, 'Status')&.downcase # DReSA: dictionary keys are lowercase
 
           # copy optional values
           material.doi = get_column row, 'DOI'

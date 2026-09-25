@@ -120,6 +120,10 @@ class Material < ApplicationRecord
   auto_strip_attributes :title, :description, :url, squish: false
 
   validates :title, :description, :url, presence: true
+  # DReSA: materials must also carry keywords, licence, status and contact
+  # (ported from production drift), and the licence must be a real one.
+  validates :keywords, :licence, :status, :contact, presence: true
+  validates :licence, exclusion: { in: [%q(notspecified)], message: %q(must be specified) }
   validates :url, url: true
   validates :other_types, presence: true, if: proc { |m| m.resource_type.include?('other') }
   validates :keywords, length: { maximum: 20 }
