@@ -18,6 +18,22 @@ class StaticController < ApplicationController
       end
     end
 
+    # DReSA: the home page tiles size themselves by how many home features
+    # are switched on (ported from production drift).
+    home_keys = %w[events materials providers trainers workflows]
+    on_features = TeSS::Config.feature.select { |k, v| home_keys.include?(k) && v == true }
+    case on_features.size
+    when 2
+      @liclass = 'pair'
+      @icon_height = 320
+    when 3
+      @liclass = 'triple'
+      @icon_height = 240
+    else
+      @liclass = 'quad'
+      @icon_height = 180
+    end
+
     @resources = @resources.sort_by(&:created_at).reverse
 
     @content_providers = set_content_providers
