@@ -1,23 +1,26 @@
 <div class="wrapper">
   <div id="content">
-    <div class="row">
-      <% if policy(Educator).create? %>
+    <% if policy(Educator).create? %>
+      <div class="row" style="margin-bottom: 1em;">
         <%= link_to new_educator_path, class: 'btn btn-primary' do %>
-          <i class="fa fa-plus-square"></i> Register educator
+          <i class="fa fa-plus-square"></i> Add educator
         <% end %>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
 
     <h1>Educators</h1>
     <p>
       Interactive AI learning assistants, grounded in curated and openly licensed sources.
       The Educator answers your questions; the Coaches run guided modules with lessons and a
       knowledge check &mdash; expect the Coaches to ask before they tell.
+      Click a tile to start a conversation.
     </p>
 
     <% @educators.group_by { |e| e.category.presence || 'Dataspaces' }.each do |category, educators| %>
-      <h2><%= category %></h2>
-      <%= render partial: 'common/masonry_grid', locals: { objects: educators } %>
+      <h2 class="educator-category"><%= category %></h2>
+      <div class="educators-grid">
+        <%= render partial: 'common/masonry_grid', locals: { objects: educators } %>
+      </div>
     <% end %>
 
     <% if @educators.empty? %>
