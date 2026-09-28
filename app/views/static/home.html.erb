@@ -33,7 +33,7 @@
   <h4 class="text-center" style="margin-top: 1em;">
     <div class="hidden-xs">Getting Started?
       See our <%= link_to 'User Manual', '/DReSA-User-Manual.pdf', target: '_blank', style: 'color: #00b8b6' %>
-      and <%= link_to 'Video Guides', 'http://videos.dresa.org.au', target: '_blank', style: 'color: #00b8b6' %>
+      and <%= link_to 'Video Guides', 'https://www.youtube.com/channel/UC4zBZxORo2hdyXSwNBKx4iA', target: '_blank', style: 'color: #00b8b6' %>
     </div>
     <div class="hidden-lg hidden-md hidden-sm">
       <div>
@@ -41,7 +41,7 @@
       </div>
       <div class="hidden-lg hidden-md hidden-sm">
         See our <%= link_to 'User Manual', '/DReSA-User-Manual.pdf', target: '_blank', style: 'color: #00b8b6' %>
-        and <%= link_to 'Video Guides', 'http://videos.dresa.org.au', target: '_blank', style: 'color: #00b8b6' %>
+        and <%= link_to 'Video Guides', 'https://www.youtube.com/channel/UC4zBZxORo2hdyXSwNBKx4iA', target: '_blank', style: 'color: #00b8b6' %>
       </div>
     </div>
   </h4>
@@ -161,6 +161,25 @@
       <p><%== raw t 'home.trainers_message' %></p>
     </li>
   <% end %>
+
+  <%# DReSA: AI educators tile (added 2026-09-28) %>
+  <li class="<%= @liclass %>">
+    <%= link_to educators_path do %>
+      <div class="hidden-sm hidden-xs">
+        <h2>Educators</h2>
+        <%= image_tag("dresa/Training_Packages_Default.png", height: "#{@icon_height}px", alt: "Educators") %>
+      </div>
+      <div class="hidden-lg hidden-md hidden-xs">
+        <h2>Educators</h2>
+        <%= image_tag("dresa/Training_Packages_Default.png", height: "#{@icon_height / 2}px", alt: "Educators") %>
+      </div>
+      <div class="hidden-lg hidden-md hidden-sm">
+        <h4>Educators</h4>
+        <%= image_tag("dresa/Training_Packages_Default.png", height: "#{@icon_height / 3}px", alt: "Educators") %>
+      </div>
+    <% end %>
+    <p><%== raw t 'home.educators_message' %></p>
+  </li>
 </ul>
 
 <% if @resources.length > 0 -%>

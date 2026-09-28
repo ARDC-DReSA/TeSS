@@ -4,7 +4,7 @@
   <%= f.input :title, label: 'Name *' %>
   <%= f.input :url, label: 'Link *', hint: 'Where the tile takes users - the educator page itself.' %>
   <%= f.input :description, as: :text, input_html: { rows: 4 },
-              hint: 'One or two sentences shown on the tile.' %>
+              hint: 'Shown in full on the tile.' %>
   <%= f.input :category, hint: 'Tiles are grouped under this heading (e.g. Dataspaces).' %>
 
   <div class="form-group">
@@ -16,6 +16,28 @@
   </div>
   <%= f.input :image_url, label: 'or image URL',
               hint: 'Alternatively, the address of an image to use.' %>
+
+  <hr>
+  <h4>Optional metadata</h4>
+
+  <!-- Provider attribution, like materials and events carry -->
+  <%= f.input :content_provider_id, label: 'Content provider',
+              collection: current_user.get_editable_providers, label_method: :title, value_method: :id,
+              include_blank: true, hint: 'The provider this educator belongs to (optional).' %>
+
+  <%= f.multi_input :keywords, hint: 'Optional keywords, one per entry.' %>
+
+  <%= f.multi_input :target_audience, hint: 'Who this educator is for (optional).' %>
+
+  <%= f.input :licence, collection: licence_options_for_select, as: :grouped_select,
+              group_method: :last, group_label_method: :first,
+              include_blank: true, prompt: 'Select a licence...',
+              input_html: { class: 'js-select2' },
+              hint: 'Licence of the educator content (optional).' %>
+
+  <%= f.input :status, collection: MaterialStatusDictionary.instance.options_for_select,
+              include_blank: true, prompt: 'Select a status...',
+              hint: 'For example active or archived (optional).' %>
 
   <%= f.button :submit, class: 'btn btn-primary' %>
   <%= link_to 'Cancel', educators_path, class: 'btn btn-default' %>

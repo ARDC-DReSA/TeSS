@@ -22,16 +22,20 @@ class StaticController < ApplicationController
     # are switched on (ported from production drift).
     home_keys = %w[events materials content_providers trainers workflows]
     on_features = TeSS::Config.feature.select { |k, v| home_keys.include?(k) && v == true }
-    case on_features.size
+    # the Educators tile always shows, so count it too
+    case on_features.size + 1
     when 2
       @liclass = 'pair'
       @icon_height = 320
     when 3
       @liclass = 'triple'
       @icon_height = 240
-    else
-      @liclass = 'quad'
+    when 4
+      @liclass = %q(quad)
       @icon_height = 180
+    else
+      @liclass = %q(quint)
+      @icon_height = 150
     end
 
     @resources = @resources.sort_by(&:created_at).reverse

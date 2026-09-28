@@ -51,6 +51,8 @@ class EducatorsController < ApplicationController
   end
 
   def educator_params
-    params.require(:educator).permit(:title, :url, :description, :image, :image_url, :category)
+    params.require(:educator).permit(:title, :url, :description, :image, :image_url, :category,
+                                     :content_provider_id, :licence, :status,
+                                     keywords: [], target_audience: [])
   end
 end

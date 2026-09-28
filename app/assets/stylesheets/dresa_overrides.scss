@@ -255,3 +255,9 @@ body {
     }
   }
 }
+
+// Five home tiles (Educators added 2026-09-28)
+ul.featureblocks li.quint { width: 20%; }
+@media (max-width: 992px) {
+  ul.featureblocks li.quint { width: 50%; }
+}
