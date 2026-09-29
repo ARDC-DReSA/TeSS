@@ -4,7 +4,16 @@
 // Taller footer (funding logos + acknowledgement of country) needs more
 // reserved space at the bottom of the body.
 body {
-  padding-bottom: 280px;
+  // Reserve room for the absolute footer (288px tall on desktop, plus
+  // margin) so page content - e.g. form submit buttons - is never hidden.
+  padding-bottom: 340px;
+}
+
+// On small screens the footer columns stack and grow tall: let it flow
+// in the document instead of overlaying content.
+@media (max-width: 768px) {
+  body { padding-bottom: 0; }
+  .footer { position: static; }
 }
 
 // DReSA shows the sidebar header that upstream hides.
