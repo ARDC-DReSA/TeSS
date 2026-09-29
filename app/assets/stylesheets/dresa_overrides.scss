@@ -225,47 +225,27 @@ body {
   }
 
   .educator-tile {
-    padding-bottom: 2.6em; // room for the Open pill
-
+    // Upstream link-overlay cards handle layout, hover and clicks natively.
+    // Only DReSA extras live here.
+    position: relative;
+  
     p {
       font-size: 13px;
       line-height: 1.45;
       color: #444;
     }
-
-// Real link, raised above the whole-tile overlay
-.educator-open {
-  position: absolute;
-  bottom: 10px;
-  left: 12px;
-  z-index: 30;
-}
-
-// Whole-tile overlay link: upstream master dropped the .media-view
-// styles the 2022 app had, so the link had zero size (nothing was
-// clickable). Restore the full-cover overlay, scoped to educator tiles.
-position: relative;
-
-.media-view {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 1;
-}
-
-    // Edit link (owners/admins) sits above the overlay link
+  
+    .educator-open {
+      margin-top: 6px;
+      display: inline-block;
+    }
+  
     .educator-admin {
       position: absolute;
       bottom: 12px;
       right: 12px;
       z-index: 30;
       font-size: 0.85em;
-    }
-
-    &:hover {
-      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
     }
   }
 }

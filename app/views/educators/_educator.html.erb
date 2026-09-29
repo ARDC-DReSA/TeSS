@@ -1,19 +1,15 @@
+<%# DReSA educator tile, using upstream's standard card pattern (see
+    collections/_collection.html.erb): the whole card is one link-overlay
+    link, so it looks and behaves like every other tile in the app.
+    Opens the educator itself in a new tab. %>
 <li class="masonry-brick media-item educator-tile">
-  <%= image_tag educator.image.url, class: "media-image listing_image" %>
-  <h3 class="media-heading"><%= educator.title %></h3>
-  <p><%= educator.description %></p>
-
-  <%# Real link: opens the educator in a new tab %>
-  <%= link_to educator.url, class: "educator-open btn btn-primary btn-xs",
-              target: "_blank", rel: "noopener",
+  <%= link_to educator.url, class: 'link-overlay', target: '_blank', rel: 'noopener',
               title: "Open #{educator.title}" do %>
-    Open <i class="fa fa-external-link"></i>
+    <%= image_tag educator.image.url, class: "media-image listing_image" %>
+    <h4><%= educator.title %></h4>
+    <p><%= educator.description %></p>
+    <span class="educator-open btn btn-primary btn-xs">Open <i class="fa fa-external-link"></i></span>
   <% end %>
-
-  <%# Whole-tile link (positioned by dresa_overrides.scss - upstream dropped
-      the .media-view overlay styles this pattern relies on) %>
-  <%= link_to '', educator.url, class: 'media-view', target: '_blank', rel: 'noopener',
-              title: "Open #{educator.title}" %>
 
   <% if policy(educator).update? %>
     <div class="educator-admin">
