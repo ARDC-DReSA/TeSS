@@ -233,13 +233,27 @@ body {
       color: #444;
     }
 
-    // Decorative pill; clicks pass through to the whole-tile link
-    .educator-open {
-      pointer-events: none;
-      position: absolute;
-      bottom: 10px;
-      left: 12px;
-    }
+// Real link, raised above the whole-tile overlay
+.educator-open {
+  position: absolute;
+  bottom: 10px;
+  left: 12px;
+  z-index: 30;
+}
+
+// Whole-tile overlay link: upstream master dropped the .media-view
+// styles the 2022 app had, so the link had zero size (nothing was
+// clickable). Restore the full-cover overlay, scoped to educator tiles.
+position: relative;
+
+.media-view {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+}
 
     // Edit link (owners/admins) sits above the overlay link
     .educator-admin {

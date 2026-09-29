@@ -3,10 +3,15 @@
   <h3 class="media-heading"><%= educator.title %></h3>
   <p><%= educator.description %></p>
 
-  <%# Decorative "open" pill: clicks fall through to the whole-tile link below %>
-  <span class="educator-open btn btn-primary btn-xs">Open <i class="fa fa-external-link"></i></span>
+  <%# Real link: opens the educator in a new tab %>
+  <%= link_to educator.url, class: "educator-open btn btn-primary btn-xs",
+              target: "_blank", rel: "noopener",
+              title: "Open #{educator.title}" do %>
+    Open <i class="fa fa-external-link"></i>
+  <% end %>
 
-  <%# The whole tile opens the educator itself (external chat app) %>
+  <%# Whole-tile link (positioned by dresa_overrides.scss - upstream dropped
+      the .media-view overlay styles this pattern relies on) %>
   <%= link_to '', educator.url, class: 'media-view', target: '_blank', rel: 'noopener',
               title: "Open #{educator.title}" %>
 

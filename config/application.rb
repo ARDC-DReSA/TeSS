@@ -26,6 +26,29 @@ module TeSS
     # config.time_zone = "Central Time (US & Canada)"
 
     config.secrets = config_for('secrets')
+    # DReSA: SMTP comes from env vars in /etc/tess/tess-ff.env (config_for
+    # drops the :smtp key from our secrets.yml - see progress log 2026-09-29).
+    # Feeding it into config.secrets here lets config/environments/production.rb
+    # apply it through the normal path.
+    if ENV["SMTP_ADDRESS"].present?
+      dresa_smtp = {
+        address: ENV["SMTP_ADDRESS"],
+        port: ENV.fetch("SMTP_PORT", "587").to_i,
+        domain: ENV["SMTP_DOMAIN"],
+        user_name: ENV["SMTP_USER_NAME"],
+        password: ENV["SMTP_PASSWORD"],
+        authentication: ENV.fetch("SMTP_AUTHENTICATION", "login").to_sym,
+        enable_starttls_auto: true
+      }
+      config.secrets[:smtp] = dresa_smtp
+      # Belt and braces: something in the boot sequence resets the
+      # action_mailer config, so apply directly once boot has finished.
+      config.after_initialize do
+        ActionMailer::Base.delivery_method = :smtp
+        ActionMailer::Base.smtp_settings = dresa_smtp
+        ActionMailer::Base.raise_delivery_errors = true
+      end
+    end
     if Rails.env.test?
       test_secrets = YAML.safe_load(File.read(Rails.root.join('test', 'config', 'test_secrets.yml'))).deep_symbolize_keys!
       config.secrets.merge!(test_secrets)
