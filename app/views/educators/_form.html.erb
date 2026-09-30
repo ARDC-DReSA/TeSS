@@ -1,6 +1,12 @@
 <%= simple_form_for @educator, html: { multipart: true } do |f| %>
   <%= f.error_notification %>
 
+  <p class="muted" style="font-size: .92em; margin-bottom: 1em;">
+    Educators are interactive learning tools people <em>use</em> &mdash; AI educators and coaches,
+    guided or interactive modules, or links to hosted learning environments (an LMS, Cogniti and
+    similar). Content people only read or watch belongs under Materials instead.
+  </p>
+
   <%= f.input :title, label: 'Name *' %>
   <%= f.input :url, label: 'Link *', hint: 'Where the tile takes users - the educator page itself.' %>
   <%= f.input :description, as: :text, input_html: { rows: 4 },

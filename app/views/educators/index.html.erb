@@ -16,6 +16,13 @@
       Click a tile to start a conversation.
     </p>
 
+    <p class="muted" style="font-size: .92em;">
+      <strong>What belongs here:</strong> interactive learning tools people <em>use</em> &mdash;
+      AI educators and coaches, guided or interactive learning modules, and links to hosted
+      learning environments (an LMS, Cogniti and similar). Things people simply read or watch
+      &mdash; slides, recordings, guides &mdash; belong under <%= link_to "Materials", materials_path %>.
+    </p>
+
     <% @educators.group_by { |e| e.category.presence || 'Dataspaces' }.each do |category, educators| %>
       <h2 class="educator-category"><%= category %></h2>
       <div class="educators-grid">
