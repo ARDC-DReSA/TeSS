@@ -1,13 +1,15 @@
 <div class="wrapper">
-  <div class="page-header">
-    <%= page_title('Contact Us') %>
-  </div>
-  <div class="row">
-    <div class="col-md-8">
-      <%= render :partial => 'form' %>
+  <div id="content">
+    <div class="page-header">
+      <%= page_title('Contact Us') %>
     </div>
-    <div class="col-md-4">
-      <%= render :partial => "contact_form/partials/contact_info" %>
+    <div class="row">
+      <div class="col-md-8">
+        <%= render :partial => 'form' %>
+      </div>
+      <div class="col-md-4">
+        <%= render :partial => "contact_form/partials/contact_info" %>
+      </div>
     </div>
   </div>
 </div>
