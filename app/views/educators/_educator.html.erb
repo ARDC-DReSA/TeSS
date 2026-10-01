@@ -4,7 +4,8 @@
     Opens the educator itself in a new tab. %>
 <li class="masonry-brick media-item educator-tile">
   <%= link_to educator.url, class: 'link-overlay', target: '_blank', rel: 'noopener',
-              title: "Open #{educator.title}" do %>
+              title: "Open #{educator.title}",
+              data: { trackable: true, trackable_type: 'Educator', trackable_id: educator.id } do %>
     <%= image_tag educator.image.url, class: "media-image listing_image" %>
     <h4><%= educator.title %></h4>
     <p><%= educator.description %></p>
