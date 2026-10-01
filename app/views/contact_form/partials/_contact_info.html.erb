@@ -2,5 +2,5 @@
   <p>Got questions or need assistance? Use the contact form to send us a message
     directly - just fill out your name, email address and message, and we'll get
     back to you as soon as possible. Alternatively, you can reach us by email at
-    contact@dresa.org.au. We look forward to hearing from you!</p>
+    <%= mail_to(TeSS::Config.contact_email) %>. We look forward to hearing from you!</p>
 <% end %>

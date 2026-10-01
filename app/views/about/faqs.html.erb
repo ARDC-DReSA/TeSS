@@ -60,7 +60,7 @@
           Yes. DReSA is accessible on all devices, including desktops, tablets, and smartphones.
 
           <div class="h4">Can I provide feedback on DReSA?</div>
-          Yes. We encourage you to provide feedback on your experience with DReSA. You can share your feedback by contacting the DReSA team via contact@dresa.org.au.
+          Yes. We encourage you to provide feedback on your experience with DReSA. You can share your feedback by contacting the DReSA team via <%= mail_to(TeSS::Config.contact_email) %>.
 
           <div class="h4">How do I subscribe to email updates for alerts on new materials uploaded to DReSA filtered by my interests?</div>
           Subscribe to email alerts, by clicking on the Subscribe button, at the top of the Materials or Events section. You will receive emails at the frequency you request that are sent out anytime a new event or new material is uploaded to DReSA. If you set the filters in the Events or Materials section when you subscribe, the emails will only be sent when new events or materials related to those filters are uploaded.  Click on your name in the top banner, and then the “Manage subscriptions” button to change your email subscriptions. You can manage your email notifications and unsubscribe at any time.
@@ -100,7 +100,7 @@
           [a link will be provided]
           If you did not request this change, please disregard this email. Your password will remain unchanged until you use the link above to create a new one.”
           <br/><br/>
-          If password issues arise that cannot be resolved through the above actions, please send your query to contact@dresa.org.au.
+          If password issues arise that cannot be resolved through the above actions, please send your query to <%= mail_to(TeSS::Config.contact_email) %>.
 
 	</div>
       </div>
@@ -118,9 +118,9 @@
           <p>1. Manual Submission:</p>
           <p>Training providers and trainers can submit their training events and materials information directly through an online form on the DReSA website. This method offers flexibility and caters to providers who only have a small number of events and materials to share on DReSA and where automated options may not be straightforward. For information on Creating and Maintaining Events and Materials refer to the DReSA User Manual.</p>
           <p>2. API Integration:</p>
-          <p>DReSA offers an Application Programming Interface (API) that allows providers to directly connect their training databases and automatically feed event information into the DReSA platform. This ensures real-time updates and reduces manual effort for both parties. Please email contact@dresa.org.au for help with setting this up.</p>
+          <p>DReSA offers an Application Programming Interface (API) that allows providers to directly connect their training databases and automatically feed event information into the DReSA platform. This ensures real-time updates and reduces manual effort for both parties. Please email <%= mail_to(TeSS::Config.contact_email) %> for help with setting this up.</p>
           <p>3. Data Harvesting:</p>
-          <p>DReSA can harvest event data from publicly available websites and calendars of partner organisations. This helps capture additional events that might not be submitted manually. If you would like to see if we can harvest your public training material email contact@dresa.org.au.</p>
+          <p>DReSA can harvest event data from publicly available websites and calendars of partner organisations. This helps capture additional events that might not be submitted manually. If you would like to see if we can harvest your public training material email <%= mail_to(TeSS::Config.contact_email) %>.</p>
           <p>4. CSV upload</p>
           <ul>
           <li>A separate file is required for each type of resource that is being ingested in csv format. The information required to set up the ingestion are the URL of each file and the name of the provider to which they should be linked.</li>
@@ -168,7 +168,7 @@
           </ul>
                
           <div class="h4">Further information:</div>
-          For further information, please visit the DReSA website https://dresa.org.au/, refer to the DReSA User Manual or email your query to contact@dresa.org.au.
+          For further information, please visit the DReSA website https://dresa.org.au/, refer to the DReSA User Manual or email your query to <%= mail_to(TeSS::Config.contact_email) %>.
         </div>
       </div>
 
