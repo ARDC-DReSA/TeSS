@@ -5,7 +5,7 @@ class ContactFormController < ApplicationController
   def create
     @name = params[:contact_form][:name]
     @phone = params[:contact_form][:phone]
-    @type = params[:contact_form][:message_type]
+    @type = params[:contact_form][:type]
     @email = params[:contact_form][:email]
     @message = params[:contact_form][:message]
 

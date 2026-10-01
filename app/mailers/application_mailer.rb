@@ -1,5 +1,7 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: TeSS::Config.sender_email
+  # DReSA: replies to any DReSA email reach the monitored contact inbox. A mailer
+  # default (not a header) so Devise emails, e.g. password resets, use it too.
+  default from: TeSS::Config.sender_email, reply_to: TeSS::Config.contact_email
   layout 'mailer'
   before_action :set_headers
 
