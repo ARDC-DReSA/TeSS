@@ -26,18 +26,18 @@ en:
         firstname: First name
         surname: Last name
   home:
-    welcome: Welcome to Digital Research Skills Australasia (DReSA)
-    subtitle: Browsing, discovering and organising digital research events and training
-      resources, collected from Australasian providers.
-    events_message: Browse and discover training events from across Australasia.
-    materials_message: Browse and discover training materials from Australasian providers.
+    welcome: Digital Research Skills Australasia (DReSA)
+    subtitle: Find training in digital research skills, from workshops to self-paced
+      tutorials. We bring it together from research organisations across Australia
+      and beyond, so you can search it all in one place.
+    events_message: Find upcoming workshops and courses. Most are online.
+    materials_message: Learn at your own pace with tutorials, videos and slides.
     workflows_message: Create training workflows to visualise learning steps and link
       to resources specific to your training needs.
-    providers_message: Browse and discover Australasian training providers who contribute
-      events and materials to DReSA.
-    educators_message: 'Chat with interactive AI educators and coaches - guided learning for digital research skills.'
-    trainers_message: Browse and discover Australasian trainers for digital research
-      skills.
+    providers_message: See the organisations that share their training through DReSA.
+    educators_message: Ask an AI educator a question, or work through a guided module
+      with an AI coach.
+    trainers_message: Find trainers and the skills they teach.
   footer:
     funded_by: "<p>The DReSA training registry is developed and delivered in partnership
       with the  <a href='https://www.ardc.edu.au/' target='_blank'>Australian Research
