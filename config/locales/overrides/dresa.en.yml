@@ -39,13 +39,9 @@ en:
       with an AI coach.
     trainers_message: Find trainers and the skills they teach.
   footer:
-    funded_by: "<p>The DReSA training registry is developed and delivered in partnership
-      with the  <a href='https://www.ardc.edu.au/' target='_blank'>Australian Research
-      Data Commons (ARDC)</a>, the  <a href='https://www.nci.org.au/' target='_blank'>National
-      Computational Infrastructure Australia (NCI)</a>, the  <a href='https://www.pawsey.org.au/'
-      target='_blank'>Pawsey Supercomputing Research Centre (Pawsey)</a> and the digital
-      research trainer community.</p> <p>ARDC, NCI and Pawsey are funded by the National
-      Collaborative Research Infrastructure Strategy (NCRIS).</p>\n"
+    funded_by: "<p>DReSA is supported by the <a href='https://www.ardc.edu.au/' target='_blank'>Australian
+      Research Data Commons (ARDC)</a>. The ARDC is enabled by the National Collaborative
+      Research Infrastructure Strategy (NCRIS).</p>"
     acknowledgement: 'We acknowledge and pay respects to the Elders and Traditional
       Owners of the lands on which our partner organisations stand.
 
