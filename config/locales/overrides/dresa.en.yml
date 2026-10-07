@@ -93,11 +93,11 @@ en:
     license: 'DReSA is committed to the FAIR principles: making data findable, accessible,
       interoperable and re-usable. As such, all data in DReSA is available under the
       CC BY 4.0 licence, and can be accessed through our API and widgets. The DReSA
-      codebase is also available on <a href="https://github.com/nrmay/TeSS/" target="_blank">GitHub</a>
+      codebase is also available on <a href="https://github.com/dresa-org-au/TeSS/" target="_blank">GitHub</a>
       for re-use under the BSD Licence.
 
       '
-    code_license: '<a href="https://github.com/nrmay/TeSS/blob/master/LICENSE", target="_blank">BSE
+    code_license: '<a href="https://github.com/dresa-org-au/TeSS/blob/master/LICENSE", target="_blank">BSD
       3-Clause</a>
 
       '
@@ -112,7 +112,7 @@ en:
       is available in our detailed documentation guide.
 
       '
-    widgets_available: https://nrmay.github.io/TeSS_widgets/
+    widgets_available: https://elixirtess.github.io/TeSS_widgets/
     widgets_mailing: |
       <p>If you do decide to include our widgets on your website, we have a mailing list you can join to keep informed
         about any service disruptions, required updates, or new features</p>
@@ -215,8 +215,7 @@ en:
       not applicable, you can contact the DReSA team to discuss potential, alternative
       solutions. This option is particularly useful if you regularly add many events
       to DReSA.</p> <p>For more information on automatically registering events in
-      DReSA, refer to the <a href="https://github.com/nrmay/TeSS_scrapers/" target="_blank">DReSA
-      Scrapers</a> repository.<p>
+      DReSA, refer to the <a href="/DReSA-Ingestion-Guide.pdf" target="_blank">DReSA Ingestion Guide</a>.<p>
 
       '
     auto_condition_1: Contains more than 3 resources
@@ -504,9 +503,7 @@ en:
             corner</li> <li>register a new provider for your organization</li> <li>start
             adding events for your provider</li></ol></p> <p>For more information
             see the following: <ol><li>User Manual: <a href="https://dresa.org.au/DReSA-User-Manual.pdf"
-            target="_blank">DReSA-User-Manual.pdf</a></li> <li>Video Guides: <a href="https://www.youtube.com/channel/UC4zBZxORo2hdyXSwNBKx4iA"
-            target="_blank">Digital Research Skills Australasia (DReSA) - YouTube</a>
-            (including the <em>Content Providers Guide</em>)</li> </ol></p> <p>Ongoing,
+            target="_blank">DReSA-User-Manual.pdf</a></li> </ol></p> <p>Ongoing,
             please use the <em>Administration</em> option in the drop-down list to
             log in, via the  <a href="https://dresa.org.au/users/sign_in" target="_blank">Sign
             in</a> page.  Note: this option does not give any special access, it just
