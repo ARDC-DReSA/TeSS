@@ -282,3 +282,13 @@ ul.featureblocks li.quint { width: 20%; }
     height: 44px;           // same visible size as the other logos
   }
 }
+
+// ---- Home search hint on phones (Oct 2026) ----
+// The hint "Search events, materials and more" is wider than the search box on
+// phones. Below 768px wide, shrink the hint only (typed text keeps its full
+// size) and trim the padding so it fits at 360px, the narrowest common phone.
+@media (max-width: 767px) {
+  .searchbox { padding-left: 8px; padding-right: 8px; }
+  .searchbox-field { padding-left: 16px; }
+  .searchbox-field::placeholder { font-size: 14px; }
+}
