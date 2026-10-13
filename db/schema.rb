@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_07_29_120000) do
+ActiveRecord::Schema[8.1].define(version: 2026_09_28_010000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -170,6 +170,30 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_29_120000) do
     t.text "text"
     t.datetime "updated_at", null: false
     t.index ["suggestible_id", "suggestible_type"], name: "index_edit_suggestions_on_suggestible_id_and_suggestible_type"
+  end
+
+  create_table "educators", force: :cascade do |t|
+    t.string "category", default: "Dataspaces"
+    t.integer "content_provider_id"
+    t.datetime "created_at", precision: nil, null: false
+    t.text "description"
+    t.string "image_content_type"
+    t.string "image_file_name"
+    t.integer "image_file_size"
+    t.datetime "image_updated_at", precision: nil
+    t.text "image_url"
+    t.string "keywords", default: [], array: true
+    t.string "licence"
+    t.string "slug"
+    t.string "status"
+    t.string "target_audience", default: [], array: true
+    t.text "title", null: false
+    t.datetime "updated_at", precision: nil, null: false
+    t.text "url", null: false
+    t.integer "user_id"
+    t.index ["content_provider_id"], name: "index_educators_on_content_provider_id"
+    t.index ["slug"], name: "index_educators_on_slug", unique: true
+    t.index ["user_id"], name: "index_educators_on_user_id"
   end
 
   create_table "event_materials", force: :cascade do |t|
