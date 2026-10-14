@@ -30,9 +30,11 @@ module Ingestors
           event.end = get_column row, 'End'
           event.timezone = get_column row, 'Timezone'
           event.contact = get_column row, 'Contact'
-          event.organizer = get_column row, 'Organizer'
+          # DReSA (DRESA-48): accept the Australian spelling used by Sydney Informatics Hub's feed
+          event.organizer = get_column(row, 'Organizer') || get_column(row, 'Organiser')
           event.eligibility = process_array row, 'Eligibility'
-          event.host_institutions = process_array row, 'Host Institutions'
+          # DReSA (DRESA-48): accept the singular heading used by Intersect's feed
+          event.host_institutions = process_array(row, 'Host Institutions') || process_array(row, 'Host Institution')
           event.online = get_column row, 'Online'
 
           # copy optional values
