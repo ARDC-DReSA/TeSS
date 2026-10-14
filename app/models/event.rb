@@ -490,8 +490,18 @@ class Event < ApplicationRecord
   end
 
   def online=(value)
-    value = :online if value.is_a?(TrueClass) || value == '1' || value == 1 || value == 'true'
-    value = :onsite if value.is_a?(FalseClass) || value == '0' || value == 0 || value == 'false'
+    # DReSA (DRESA-48, Oct 2026): contributors' CSV feeds send the old "Online" column as TRUE/FALSE
+    # (capitals) or Yes/No, which the upstream check (lowercase 'true'/'false' only) rejected, so whole
+    # feeds failed with "'TRUE' is not a valid presence". Compare without regard to case and spaces,
+    # and also accept the new presence words themselves.
+    v = value.is_a?(String) ? value.strip.downcase : value
+    if v.is_a?(TrueClass) || v == 1 || %w[1 true yes y online].include?(v)
+      value = :online
+    elsif v.is_a?(FalseClass) || v == 0 || %w[0 false no n onsite in-person].include?(v)
+      value = :onsite
+    elsif v == 'hybrid'
+      value = :hybrid
+    end
     self.presence = value
   end
 
