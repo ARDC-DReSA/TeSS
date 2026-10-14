@@ -27,6 +27,16 @@ module Ingestors
       nil
     end
 
+    # DReSA (DRESA-48): DReSA requires host institutions and a contact on every event; Eventbrite
+    # supplies neither. As on the old DReSA site, take them from the content provider when blank.
+    def write(user, provider, source: nil)
+      @events.each do |event|
+        event.host_institutions = [provider.title] if event.host_institutions.blank?
+        event.contact = provider.contact if event.contact.blank? && provider.respond_to?(:contact)
+      end
+      super
+    end
+
     private
 
     def process_eventbrite(url)
@@ -119,10 +129,11 @@ module Ingestors
                   event.event_types << type unless type.nil?
                 end
 
+                # DReSA (DRESA-48): eligibility is a list; a bare word was dropped and the event rejected
                 event.eligibility = if item['invite_only'].nil? or !item['invite_only']
-                                      'open_to_all'
+                                      ['open_to_all']
                                     else
-                                      'by_invitation'
+                                      ['by_invitation']
                                     end
 
                 if item['is_free'].nil? or !item['is_free']
@@ -318,12 +329,14 @@ module Ingestors
 
     def convert_event_types(input)
       case input.downcase
+      # DReSA (DRESA-48): map to DReSA's event types (config/dictionaries/event_types_dresa.yml),
+      # not upstream ELIXIR's, which DReSA's vocabulary check rejects
       when 'conference', 'retreat'
-        'meetings_and_conferences'
+        'conference'
       when 'class', 'seminar'
-        'workshops_and_courses'
+        'workshop'
       when 'networking', 'expo', 'convention'
-        'receptions_and_networking'
+        'meeting'
       else
         super
       end
