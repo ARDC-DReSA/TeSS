@@ -19,5 +19,12 @@
     <%= form.label :message %>
     <%= form.text_area :message, class: "form-control", rows: 5 %>
   </div>
+  <%# DReSA spam check (Oct 2026): a box people never see (robots fill it in), and a signed
+      timestamp of when this page was shown. See ContactFormController. %>
+  <div style="position: absolute; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden;" aria-hidden="true">
+    <%= form.label :website, "Leave this field empty" %>
+    <%= form.text_field :website, tabindex: "-1", autocomplete: "off", value: "" %>
+  </div>
+  <%= form.hidden_field :rendered_at, value: Rails.application.message_verifier(:contact_form).generate(Time.now.to_i) %>
   <%= form.submit "Submit", class: "btn btn-primary" %>
 <% end %>
