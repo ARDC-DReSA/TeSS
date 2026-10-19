@@ -1,1 +1,4 @@
 # See https://www.robotstxt.org/robotstxt.html for documentation on how to use the robots.txt file
+
+# DReSA (DRESA-48, Oct 2026): where search engines find the list of pages (rebuilt daily by the sitemap job)
+Sitemap: https://dresa.org.au/sitemaps/sitemap.xml
