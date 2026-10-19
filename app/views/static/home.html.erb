@@ -31,15 +31,14 @@
   <h2 class="module-heading" style="margin-top: 5px;"><%== raw t 'home.welcome' %></h2>
   <p><%== raw t 'home.subtitle' %></p>
   <h4 class="text-center" style="margin-top: 1em;">
-    <div class="hidden-xs">Getting Started?
-      See our <%= link_to 'User Manual', '/DReSA-User-Manual.pdf', target: '_blank', style: 'color: #00b8b6' %>
+    <div class="hidden-xs">New to DReSA? Read the <%= link_to 'User Manual', '/DReSA-User-Manual.pdf', target: '_blank', style: 'color: #00b8b6' %>.
     </div>
     <div class="hidden-lg hidden-md hidden-sm">
       <div>
-        Getting Started?
+        New to DReSA?
       </div>
       <div class="hidden-lg hidden-md hidden-sm">
-        See our <%= link_to 'User Manual', '/DReSA-User-Manual.pdf', target: '_blank', style: 'color: #00b8b6' %>
+        Read the <%= link_to 'User Manual', '/DReSA-User-Manual.pdf', target: '_blank', style: 'color: #00b8b6' %>.
       </div>
     </div>
   </h4>
@@ -50,7 +49,7 @@
   <%= form_tag search_path, method: :get, role: 'search' do %>
     <div class="searchbox-wrapper">
       <input type="text" class="searchbox-field" name="q"
-             placeholder="Search <%= TeSS::Config.site['title_short'] %>..." autofocus="autofocus">
+             placeholder="Search events, materials and more" autofocus="autofocus">
       <button type="submit" class="searchbox-btn">
         <i class="fa fa-search"></i>
       </button>
@@ -182,7 +181,7 @@
 
 <% if @resources.length > 0 -%>
   <div id="materials-title">
-    <h3>Latest Content in <%= TeSS::Config.site['title_short'] %></h3>
+    <h3>Recently added</h3>
   </div>
   <% @resources.each do |resource| %>
     <%= render layout: 'common/mixed_resources', locals: { resource: resource } do %>
