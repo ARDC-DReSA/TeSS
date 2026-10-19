@@ -52,19 +52,10 @@
     <li class="about-page-category">
       <%= link_to t('about.sidebar.about_us'), us_path %>
     </li>
-    <% 
-      about_us_tabs = [
-        {link: us_path , key:'tess_club'},
-        {link: us_path , key:'contact'},
-        {link: us_path , key:'team'},
-        {link: us_path , key:'funding'},
-        {link: us_path , key:'acknowledgements'},
-        {link: us_path , key:'cite'}
-      ].select do |tab|
-        TeSS::Config.site['about_us_tab_order'].include?(tab[:key])
-      end.sort_by do |tab|
-        TeSS::Config.site['about_us_tab_order'].index(tab[:key]) || 99
-      end
+    <%
+      # DReSA (DRESA-30, Oct 2026): list the tabs that tess.yml configures, in that
+      # order, instead of a fixed list that left new tabs out of the sidebar.
+      about_us_tabs = TeSS::Config.site['about_us_tab_order'].map { |key| { link: us_path, key: key } }
     %>
     <% about_us_tabs.each do |tab| %>
       <li><%= about_nav_link(t("us.keys.#{tab[:key]}"), tab[:link], tab[:key]) %></li>

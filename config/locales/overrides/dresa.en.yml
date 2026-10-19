@@ -51,18 +51,14 @@ en:
 
       '
   about:
+    mtessx: ''
+    history: ''
     registry: "<p>DReSA makes it easier for learners, trainers, and training providers
       to find digital research skills-focused educational events and resources.</p>
       <p>Through DReSA, its creators seek to: <ul> <li>Lift Australasian researchers'
       capabilities and skills by improving the findability of events and resources</li>
       <li>Build national, collaborative, training partnerships</li> <li>Strategically
-      leverage trainers' and learners' time and resources</li> </ul></p> <p>DReSA
-      began as a grassroots movement among trainers and training providers in Australia
-      and New Zealand to improve the discoverability of training. After scoping the
-      landscape for similar solutions, the Working Group located ELIXIR's TeSS platform.
-      From there, began a truly collaborative, global partnership with ELIXIR and
-      an exchange of, not only the infrastructure that underlies TeSS, but also the
-      ideas, support and encouragement.</p>\n"
+      leverage trainers' and learners' time and resources</li> </ul></p> <p>DReSA began as a grassroots movement among trainers and training providers in Australia and New Zealand to improve the discoverability of digital skills training. It grew out of the ARDC's Australian eResearch and Data Skills Summit in 2020, which led to the National Training Registry and Calendar Working Group. After scoping the landscape, the Working Group chose ELIXIR's TeSS platform as the code base for DReSA, beginning a collaborative partnership with ELIXIR that has exchanged software, ideas and support ever since.</p>\n"
     events: "<p>Events in DReSA are defined as face-to-face or online training opportunities
       that have set start and end times. These primarily take the form of workshops,
       courses, webinars, etc.</p> <p>DReSA also collects information about conferences,
@@ -133,70 +129,83 @@ en:
       <p>We recommend using our JSON API, but if you have already begun using our old API technical information
         can still be found on our <a href="https://app.swaggerhub.com/api/njall/TeSS/1.0.0/">here</a>.</p>
   us:
-    tess_club: '<p>Fortnightly meetings, hackathons, shared activities, open priority
-      setting, open contribution to unite the community.</p><p>The TeSS Club runs
-      fortnightly at 9:00 GMT / 10:00 CET Friday.</p><p>For all the details please
-      visit the <a href="https://elixirtess.github.io/about/">TeSS Club Website</a>.</p>
+    keys:
+      built_on_tess: Built on TeSS
+      contact: Contact
+      history: Our history
+      funding: Funding and partners
+      acknowledgements: Acknowledgements
+      cite: Cite us
+    built_on_tess: '<p>DReSA runs on TeSS, the open-source training registry developed by ELIXIR,
+      Europe''s research infrastructure for life-science data. We keep DReSA close to the TeSS
+      code so that improvements can flow in both directions. The TeSS community meets regularly
+      and welcomes contributors; see the <a href="https://elixirtess.github.io/about/"
+      target="_blank" rel="noopener">TeSS community site</a>.</p>
 
       '
     contact: 'For enquiries, information, or assistance; contact the DReSA support
       desk at: <a href="mailto:rob.clemens@ardc.edu.au">rob.clemens@ardc.edu.au</a>
 
       '
-    team:
-      description: "<p>The idea for a training registry and calendar had been bubbling
-        away for some time. Seen by trainers and training providers as a challenge
-        to tackle, DReSA was born out of the need to improve the discoverability of
-        training. The Working Group formed at the ARDC Skills Summit 2020, as a result
-        of active participation, collaboration and a common objective. A key first
-        step was to scan the landscape for similar solutions, with the Working Group
-        identifying ELIXIR's TeSS platform as a likely exemplar. From there began
-        a truly collaborative and global partnership with ELIXIR and an exchange of
-        the infrastructure that underlies TeSS, and also ideas, support and encouragement.</p>\n"
-      develop: '<div class="h4">Software Engineering & Project Management</div> <ul><li>Nick
-        May (Contractor)</li></ul><br/>
-
-        '
-      working: '<div class="h4">Working Group Members</div> <div class="h5">Product
-        Owners</div> <ul> <li>Anastasios Papaioannou (Intersect Australia)</li> <li>Ann
-        Backhaus (Pawsey Supercomputing Research Centre)</li> <li>Kathryn Unsworth
-        (Australian Research Data Commons - ARDC)</li> <li>Melissa Burke (Australian
-        BioCommons)</li> </ul> <div class="h5">Core Members</div> <ul> <li>Christina
-        Street (Commonwealth Scientific and Industrial Research Organisation - CSIRO)</li>
-        <li>Christopher McAvaney (Deakin University)</li> <li>Darya Vanichkina (University
-        of Sydney, Sydney Informatics Hub)</li> <li>Jingbo Wang (National Computational
-        Infrastructure - NCI)</li> <li>Jon Symon (University of Newcastle)</li> <li>Kay
-        Steel (Federation University)</li> <li>Kiowa Scott (Monash University)</li>
-        <li>Mark Crowe (Queensland Cyber Infrastructure Foundation - QCIF)</li> <li>Mortaza
-        Rezae (Australian Space Data Analysis Facility, ASDAF)</li> <li>Nick Hamilton
-        (University of Queensland, QCIF)</li> <li>Phillippa Bourke (University of
-        Sydney)</li> <li>Titus Tang (Monash University, Data Science and AI Platform)</li>
-        </ul><br/>
-
-        '
-      partner: <div class="h4">Partner Organisations</div><br/>
-      guidance: '<div class="h4">Additional Guidance</div> <ul> <li>Angus White (DCC
-        UK)</li> <li>Chris Child (ELIXIR TeSS)</li> <li>Iryna Kuchma (IEFL)</li> </ul>
-
-        '
-    funding: '<p>DReSA received investments from the <a href="https://pawsey.org.au"
-      target="_blank">Pawsey Supercomputing Research Centre (Pawsey)</a> and the <a
-      href="https://ardc.edu.au" target="_blank">Australian Research Data Commons
-      (ARDC)</a>.</p> <p> Pawsey and ARDC are funded by the National Collaborative
-      Research Infrastructure Strategy (NCRIS).</p>
+    history: |
+      <p>The idea of a national training registry and calendar had been discussed among trainers
+      and training providers for some time. DReSA was born out of the need to improve the
+      discoverability of training. The Working Group formed at the ARDC Skills Summit in 2020, and
+      after scanning the landscape for similar solutions it identified ELIXIR's TeSS platform as the
+      best starting point. From there began a collaborative, global partnership with ELIXIR and an
+      exchange of the infrastructure that underlies TeSS, as well as ideas, support and
+      encouragement.</p>
+      <p>The DReSA training registry is developed and delivered in partnership with the Australian
+      Research Data Commons (ARDC), the National Computational Infrastructure Australia (NCI), the
+      Pawsey Supercomputing Research Centre (Pawsey) and the digital research trainer community.</p>
+      <div class="h4">Organisations that established DReSA</div>
+      <ul>
+        <li>Australian Research Data Commons (ARDC)</li>
+        <li>Pawsey Supercomputing Research Centre</li>
+        <li>Intersect Australia</li>
+        <li>Australian BioCommons</li>
+        <li>CSIRO</li>
+        <li>Deakin University</li>
+        <li>Federation University</li>
+        <li>Monash University, including the Data Science and AI Platform</li>
+        <li>National Computational Infrastructure (NCI)</li>
+        <li>Queensland Cyber Infrastructure Foundation (QCIF)</li>
+        <li>Australian Space Data Analysis Facility (ASDAF)</li>
+        <li>University of Newcastle</li>
+        <li>University of Queensland</li>
+        <li>University of Sydney, including the Sydney Informatics Hub</li>
+      </ul>
+      <p>The Working Group was guided by the ELIXIR TeSS team, the Digital Curation Centre (UK) and
+      EIFL. The software was built by an independent software engineer under contract to the
+      Working Group.</p>
+      <p>DReSA is currently maintained by the ARDC.</p>
+    funding: '<p>DReSA was built and is maintained by the National Computational Infrastructure
+      (NCI), the <a href="https://pawsey.org.au" target="_blank" rel="noopener">Pawsey Supercomputing
+      Research Centre (Pawsey)</a> and the <a href="https://ardc.edu.au" target="_blank"
+      rel="noopener">Australian Research Data Commons (ARDC)</a>. ARDC, NCI and Pawsey are funded by
+      the National Collaborative Research Infrastructure Strategy (NCRIS).</p>
 
       '
-    acknowledge: |
-      <p>The DReSA team would like to acknowledge the help of a number of groups and individuals, and thank them
-         for useful discussions, feedback and assistance in developing the DReSA portal:</p>
+    acknowledgements: |
+      <p>The DReSA team would like to acknowledge the help of a number of groups and thank them
+      for useful discussions, feedback and assistance in developing DReSA:</p>
       <ul>
         <li>Members of the ARDC National Training Registry Working Group</li>
-        <li>Attendees of eResearch and Data Skills conferences</li>
-        <li><a href="https://tess.elixir-europe.org/" target="_blank">ELIXIR's Training Platform</a> and
-            <a href="https://elixirtess.github.ioi/about/" target="_blank">TeSS community</a></li>
-        <li><a href="https://www.dcc.ac.uk/" target="_blank">The Digital Curation Centre</a></li>
-        <li><a href="https://eosc-portal.eu/" target="_blank">The European Open Science Cloud</a></li>
+        <li>Attendees of eResearch and data skills conferences</li>
+        <li><a href="https://tess.elixir-europe.org/" target="_blank" rel="noopener">ELIXIR's Training Platform</a> and the
+            <a href="https://elixirtess.github.io/about/" target="_blank" rel="noopener">TeSS community</a></li>
+        <li><a href="https://www.dcc.ac.uk/" target="_blank" rel="noopener">The Digital Curation Centre (UK)</a></li>
+        <li><a href="https://eosc-portal.eu/" target="_blank" rel="noopener">The European Open Science Cloud</a></li>
       </ul>
+      <p>DReSA is based on the ELIXIR TeSS platform.</p>
+    cite: |
+      <p>To cite DReSA: Digital Research Skills Australasia (DReSA), Australian Research Data Commons,
+      <a href="https://dresa.org.au">https://dresa.org.au</a> (accessed [date]).</p>
+      <p>DReSA is built on the TeSS platform. To cite TeSS: Niall Beard, Finn Bacall, Aleksandra Nenadic,
+      Milo Thurston, Carole A Goble, Susanna-Assunta Sansone, Teresa K Attwood, TeSS: a platform for
+      discovering life-science training opportunities, Bioinformatics, Volume 36, Issue 10, 15 May 2020,
+      Pages 3290-3291, <a href="https://doi.org/10.1093/bioinformatics/btaa047" target="_blank"
+      rel="noopener">https://doi.org/10.1093/bioinformatics/btaa047</a></p>
   register:
     resources: "<p>Adding events to DReSA make them easier to find for learners, trainers
       and other training providers. This can help attract bigger audiences and increase
