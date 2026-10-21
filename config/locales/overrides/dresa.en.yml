@@ -220,7 +220,7 @@ en:
       not applicable, you can contact the DReSA team to discuss potential, alternative
       solutions. This option is particularly useful if you regularly add many events
       to DReSA.</p> <p>For more information on automatically registering events in
-      DReSA, refer to the <a href="/DReSA-Ingestion-Guide.pdf" target="_blank">DReSA Ingestion Guide</a>.<p>
+      DReSA, refer to the <a href="/DReSA-Contributor-Guide.pdf" target="_blank">DReSA Contributor Guide</a>, which lists every field and allowed term. The older <a href="/DReSA-Ingestion-Guide.pdf" target="_blank">DReSA Ingestion Guide</a> is kept for reference.<p>
 
       '
     auto_condition_1: Contains more than 3 resources
