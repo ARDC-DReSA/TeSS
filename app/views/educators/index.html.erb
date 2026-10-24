@@ -25,6 +25,15 @@
 
     <% @educators.group_by { |e| e.category.presence || 'Dataspaces' }.each do |category, educators| %>
       <h2 class="educator-category"><%= category %></h2>
+      <% if category == 'Dataspaces' %>
+        <%# DRESA-63 (Oct 2026): the two Dataspaces 101 session recordings, hosted under /media/ %>
+        <p class="muted" style="font-size: .92em; margin-top: -1.2em; margin-bottom: 1em;">
+          New to dataspaces? Watch the Dataspaces 101 recordings first:
+          <%= link_to 'Session 1 (51 min)', 'https://dresa.org.au/media/dataspaces-101/dataspaces-101-session-1.html' %> &middot;
+          <%= link_to 'Session 2 (1 h 49 min)', 'https://dresa.org.au/media/dataspaces-101/dataspaces-101-session-2.html' %>.
+          They are also listed under <%= link_to 'Materials', materials_path(q: 'Dataspaces 101') %>.
+        </p>
+      <% end %>
       <div class="educators-grid">
         <%= render partial: 'common/masonry_grid', locals: { objects: educators } %>
       </div>
