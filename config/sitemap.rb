@@ -15,6 +15,11 @@ generate_sitemap_content = lambda do |space|
   group(filename: :site) do
     add root_path, changefreq: 'daily', priority: 1.0
     add about_path, priority: 0.4
+    # DReSA (DRESA-65): the AI educators page and the five coach pages
+    add educators_path, changefreq: 'weekly', priority: 0.8
+    %w[dataspaces_ed dataspaces_101 dataspaces_start dataspaces_governance dataspaces_tech].each do |p|
+      add "/#{p}/", changefreq: 'monthly', priority: 0.8
+    end
     types.each do |type, options|
       next unless space.feature_enabled?(type.to_s)
       add polymorphic_path(type), lastmod: options[:resources].maximum(:updated_at), **options.except(:resources)

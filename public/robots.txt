@@ -2,3 +2,9 @@
 
 # DReSA (DRESA-48, Oct 2026): where search engines find the list of pages (rebuilt daily by the sitemap job)
 Sitemap: https://dresa.org.au/sitemaps/sitemap.xml
+
+# DReSA (DRESA-65, Oct 2026): filter pages are endless combinations of the same listings;
+# ask crawlers to skip them so they spend their effort on real pages.
+User-agent: *
+Disallow: /*%5B%5D=
+Disallow: /*[]=
