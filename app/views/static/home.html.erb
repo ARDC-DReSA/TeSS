@@ -2,8 +2,8 @@
 {
   "@context": "http://schema.org",
   "@type": "WebSite",
-  "name": TeSS::Config.site['title_short'],
-  "alternateName": TeSS::Config.site['title'],
+  "name": <%= raw TeSS::Config.site['title_short'].to_json %>,
+  "alternateName": <%= raw TeSS::Config.site['title'].to_json %>, <%# DRESA-66: was printed as code %>
   "url": "<%= root_url %>",
   "potentialAction": {
     "@type": "SearchAction",
