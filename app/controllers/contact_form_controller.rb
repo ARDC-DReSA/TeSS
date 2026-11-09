@@ -27,6 +27,12 @@ class ContactFormController < ApplicationController
       flash[:success] = "Your message has been sent successfully."
       return redirect_to :root
     end
+    # 3. Rate limit (DRESA-81, 9 Nov 2026): at most 3 messages per sender address per hour and 20 a day
+    #    in total. Over the limit, drop the message quietly, like the checks above.
+    if contact_rate_limited?
+      flash[:success] = "Your message has been sent successfully."
+      return redirect_to :root
+    end
 
     @name = params[:contact_form][:name]
     @phone = params[:contact_form][:phone]
@@ -39,6 +45,34 @@ class ContactFormController < ApplicationController
     #ContactFormMailer.welcome_email.deliver_now
     flash[:success] = "Your message has been sent successfully."
     redirect_to :root
+  end
+
+  private
+
+  # DRESA-81: limits for the contact form (see create, check 3).
+  CONTACT_PER_ADDRESS_PER_HOUR = 3
+  CONTACT_PER_DAY = 20
+
+  # Counts this message against both limits in Redis (shared by all app workers; each counter
+  # expires on its own) and says whether either limit is now exceeded.
+  def contact_rate_limited?
+    now = Time.now.utc
+    address_key = "contact_form:address:#{request.remote_ip}:#{now.strftime('%Y%m%d%H')}"
+    day_key = "contact_form:day:#{now.strftime('%Y%m%d')}"
+    per_address, per_day = Sidekiq.redis do |r|
+      a = r.call('INCR', address_key); r.call('EXPIRE', address_key, 2 * 3600)
+      d = r.call('INCR', day_key);     r.call('EXPIRE', day_key, 2 * 86_400)
+      [a, d]
+    end
+    if per_address > CONTACT_PER_ADDRESS_PER_HOUR || per_day > CONTACT_PER_DAY
+      Rails.logger.info("[contact_form] blocked: rate limit (#{per_address} this hour from this address, #{per_day} today)")
+      return true
+    end
+    false
+  rescue StandardError => e
+    # Never block genuine mail because the counter store had a problem.
+    Rails.logger.warn("[contact_form] rate limit check skipped: #{e.class}")
+    false
   end
 
 end
