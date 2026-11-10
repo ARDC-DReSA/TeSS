@@ -33,5 +33,14 @@
     <% end %>
   <% end %>
 
+  <%# DRESA-82: the page's main address for search engines (site base_url + path; only "page" kept from the
+      query). Only on pages that load normally (not error pages), and skipped when the page sets its own
+      canonical tag in :extra_head (e.g. /educators). %>
+  <% unless response.status.to_i != 200 || (content_for?(:extra_head) && content_for(:extra_head).include?('rel="canonical"')) %>
+    <% canonical_query = request.query_parameters.slice('page').reject { |_k, v| v.to_s == '1' } %>
+    <%= tag(:link, rel: 'canonical',
+            href: "#{TeSS::Config.base_url.to_s.chomp('/')}#{request.path}#{canonical_query.any? ? '?' + canonical_query.to_query : ''}") %>
+  <% end %>
+
   <%= yield :extra_head if content_for? :extra_head %>
 </head>
