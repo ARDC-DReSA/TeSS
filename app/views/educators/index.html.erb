@@ -22,21 +22,23 @@
     <% end %>
 
     <h1>Educators</h1>
-    <p>
-      Interactive AI learning assistants, grounded in curated and openly licensed sources.
-      Want to build your own educator? Learn how in our open repository:
-      <a href="https://github.com/au-research/AI-educators">github.com/au-research/AI-educators</a>.
-      The Educator answers your questions; the Coaches run guided modules with lessons and a
-      knowledge check. Expect the Coaches to ask before they tell.
-      Click a tile to start a conversation.
+    <%# 16 Nov 2026 (Rob): intro says what problem each tool solves; the old intro moved to the bottom %>
+    <p class="lead">
+      Getting to grips with a new topic, such as dataspaces or FAIR data, can mean reading long
+      standards and reports before you find what you need. Our AI Educators and Coaches help in
+      two different ways.
     </p>
-
-    <p class="muted" style="font-size: .92em;">
-      <strong>What belongs here:</strong> interactive learning tools people <em>use</em> &mdash;
-      AI educators and coaches, guided or interactive learning modules, and links to hosted
-      learning environments (an LMS, Cogniti and similar). Things people simply read or watch
-      &mdash; slides, recordings, guides &mdash; belong under <%= link_to "Materials", materials_path %>.
-    </p>
+    <ul class="educators-intro">
+      <li><strong>Educators answer your questions.</strong> Ask about your own situation and get a
+        direct answer drawn first from a curated set of trusted sources. If those sources do not
+        cover your question, the Educator can fill the gap with general AI knowledge, and a note on
+        each answer tells you which kind of answer you got, so you know what to check.</li>
+      <li><strong>Coaches teach you the core concepts.</strong> Each Coach takes you through a short
+        guided module on what we think you should know about the topic. Expect it to ask you
+        questions before it gives answers. Each module ends with a short knowledge check, so you can
+        confirm what you have learned.</li>
+    </ul>
+    <p>Click a tile to start a conversation.</p>
 
     <% @educators.group_by { |e| e.category.presence || 'Dataspaces' }.each do |category, educators| %>
       <h2 class="educator-category"><%= category %></h2>
@@ -57,5 +59,22 @@
     <% if @educators.empty? %>
       <p class="muted">No educators registered yet.</p>
     <% end %>
+
+    <%# Moved here from the top of the page, 16 Nov 2026 %>
+    <hr>
+    <p>
+      Interactive AI learning assistants, grounded in curated and openly licensed sources.
+      Want to build your own educator? Learn how in our open repository:
+      <a href="https://github.com/au-research/AI-educators">github.com/au-research/AI-educators</a>.
+      The Educator answers your questions; the Coaches run guided modules with lessons and a
+      knowledge check. Expect the Coaches to ask before they tell.
+    </p>
+
+    <p class="muted" style="font-size: .92em;">
+      <strong>What belongs here:</strong> interactive learning tools people <em>use</em>:
+      AI educators and coaches, guided or interactive learning modules, and links to hosted
+      learning environments (an LMS, Cogniti and similar). Things people simply read or watch,
+      such as slides, recordings and guides, belong under <%= link_to "Materials", materials_path %>.
+    </p>
   </div>
 </div>
