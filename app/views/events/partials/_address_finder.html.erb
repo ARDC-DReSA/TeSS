@@ -17,7 +17,8 @@
 
 <div class="manual-address-fields">
   <%= f.input :venue, field_lock: true %>
-  <%= f.input :city, field_lock: true, required: true %>
+  <%# DReSA (DRESA-95): City is optional (many events are online; contributors may type "Online"). %>
+  <%= f.input :city, field_lock: true %>
   <!-- County: check disabled -->
   <% if !TeSS::Config.feature['disabled'].include? 'county' %>
     <%= f.input :county, field_lock: true %>
