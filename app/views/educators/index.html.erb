@@ -47,7 +47,8 @@
     </ul>
     <p>Click a tile to start a conversation.</p>
 
-    <% @educators.group_by { |e| e.category.presence || 'Dataspaces' }.each do |category, educators| %>
+    <%# DRESA-96: headings come in a fixed order (ARDC's first) from Educator.visible_categories %>
+    <% Educator.visible_categories.each do |category, educators| %>
       <h2 class="educator-category"><%= category %></h2>
       <% if category == 'Dataspaces' %>
         <%# DRESA-63 (Oct 2026): the two Dataspaces 101 session recordings, hosted under /media/ %>

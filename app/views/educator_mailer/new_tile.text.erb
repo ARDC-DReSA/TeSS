@@ -1,0 +1,13 @@
+<%# DRESA-96: plain-text email to the site contact when a non-curator adds an Educators tile %>
+A new tile has been added to the <%= TeSS::Config.site['title_short'] %> Educators page. It is already live.
+
+  Name:    <%= @educator.title %>
+  Heading: <%= @educator.heading %>
+  Link:    <%= @educator.url %>
+  Added by: <%= @user&.name %> (<%= @user ? user_url(@user) : 'unknown' %>)
+
+Description:
+<%= @educator.description %>
+
+Check it on the page: <%= educators_url %>
+Edit or remove it: <%= edit_educator_url(@educator) %>

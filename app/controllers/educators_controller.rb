@@ -22,7 +22,10 @@ class EducatorsController < ApplicationController
     authorize Educator
     @educator = Educator.new(educator_params)
     @educator.user = current_user
-    if @educator.save
+    if ardc_heading_allowed? && @educator.save
+      # DRESA-96: a tile from someone who is not a curator or admin goes live at once,
+      # and the site contact is emailed so a curator can check it (and hide it if needed).
+      EducatorMailer.new_tile(@educator).deliver_later unless Educator.ardc_heading_user?(current_user)
       redirect_to educators_path, notice: 'Educator was successfully registered.'
     else
       render :new
@@ -31,7 +34,8 @@ class EducatorsController < ApplicationController
 
   def update
     authorize @educator
-    if @educator.update(educator_params)
+    @educator.assign_attributes(educator_params)
+    if ardc_heading_allowed? && @educator.save
       redirect_to educators_path, notice: 'Educator was successfully updated.'
     else
       render :edit
@@ -45,6 +49,17 @@ class EducatorsController < ApplicationController
   end
 
   private
+
+  # DRESA-96: only curators and admins may move a tile into an ARDC heading
+  # (Dataspaces, FAIR). The drop-down already hides them; this also stops a
+  # hand-made request. A tile already under an ARDC heading keeps it when edited.
+  def ardc_heading_allowed?
+    return true unless Educator::ARDC_HEADINGS.include?(@educator.category)
+    return true if Educator.ardc_heading_user?(current_user)
+    return true if @educator.persisted? && !@educator.category_changed?
+    @educator.errors.add(:category, 'is kept for ARDC tiles; please choose another heading')
+    false
+  end
 
   def set_educator
     @educator = Educator.friendly.find(params[:id])
