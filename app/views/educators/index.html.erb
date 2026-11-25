@@ -13,10 +13,17 @@
 <% end %>
 <div class="wrapper">
   <div id="content">
-    <% if policy(Educator).create? %>
+    <%# DRESA-91 (25 Nov 2026): the button shows for everyone, including visitors who are not
+        signed in. The form page still requires sign-in: a visitor who clicks is sent to sign in
+        and then returned to the form. Signed-in users who are not allowed to add (basic users)
+        still do not see it. %>
+    <% if current_user.nil? || policy(Educator).create? %>
       <div style="margin-bottom: 1em;">
         <%= link_to new_educator_path, class: 'btn btn-primary' do %>
-          <i class="fa fa-plus-square"></i> Add educator
+          <i class="fa fa-plus-square"></i> Add an educator or interactive tool
+        <% end %>
+        <% unless current_user %>
+          <span class="muted" style="font-size: .92em; margin-left: .5em;">You will be asked to sign in first.</span>
         <% end %>
       </div>
     <% end %>
