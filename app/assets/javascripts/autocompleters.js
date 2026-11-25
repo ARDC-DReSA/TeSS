@@ -3,7 +3,9 @@ var Autocompleters = {
         var result = $.Autocomplete.defaults.formatResult(suggestion, currentValue);
 
         if (suggestion.data && suggestion.data.hint) {
-            result += '<span class="autocomplete-hint">' + suggestion.data.hint + '</span>';
+            // DReSA (DRESA-57): escape the hint (e.g. an ORCID) so text from the database
+            // can never be read by the browser as HTML; .text() then .html() does the escaping.
+            result += '<span class="autocomplete-hint">' + $('<span>').text(suggestion.data.hint).html() + '</span>';
         }
 
         return result;
